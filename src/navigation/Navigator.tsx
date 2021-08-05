@@ -5,8 +5,15 @@ import {DetalleScreen} from '../screens/DetalleScreen';
 import {PerfilScreen} from '../screens/PerfilScreen';
 
 import Colors from '../constants/Colors';
+import {Track} from '../interfaces/tracksInterfaces';
 
-const Stack = createStackNavigator();
+export type RootStackParams = {
+  HomeScreen: undefined;
+  DetalleScreen: Track;
+  PerfilScreen: undefined;
+};
+
+const Stack = createStackNavigator<RootStackParams>();
 
 export const Navigator = () => {
   return (

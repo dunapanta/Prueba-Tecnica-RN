@@ -4,6 +4,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import {ListTracks} from '../components/ListTracks';
 import Colors from '../constants/Colors';
 import {useObtainTracksList} from '../hooks/useObtainTracksList';
 
@@ -15,13 +16,14 @@ export const HomeScreen = () => {
       <StatusBar backgroundColor={Colors.primary} />
       <View style={styles.header}>
         <View style={{flex: 1, marginLeft: 10}}>
-          <Icon name="menu-outline" size={46} color={Colors.secondary} />
+          <Icon name="menu-outline" size={36} color={Colors.secondary} />
         </View>
         <View style={{flex: 3}}>
           <Text style={styles.headerText}>Top Tracks en España</Text>
         </View>
       </View>
-      <Text>{JSON.stringify(topTracksList, null, 5)}</Text>
+      <ListTracks topTracks={topTracksList} />
+      {/* <Text>{JSON.stringify(topTracksList, null, 5)}</Text> */}
     </View>
   );
 };
@@ -34,7 +36,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 10,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   headerText: {
     color: Colors.secondary,
