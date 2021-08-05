@@ -12,7 +12,7 @@ export const HomeScreen = () => {
   const {top} = useSafeAreaInsets();
   const {topTracksList} = useObtainTracksList();
   return (
-    <View style={styles.container}>
+    <View style={{...styles.container, top: top}}>
       <StatusBar backgroundColor={Colors.primary} />
       <View style={styles.header}>
         <View style={{flex: 1, marginLeft: 10}}>
