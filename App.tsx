@@ -1,12 +1,19 @@
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
+import {UserTracksProvider} from './src/context/UserTracksContext';
 
-import { Navigator } from './src/navigation/Navigator';
+import {Navigator} from './src/navigation/Navigator';
+
+const AppState = ({children}: any) => {
+  return <UserTracksProvider>{children}</UserTracksProvider>;
+};
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Navigator />
+      <AppState>
+        <Navigator />
+      </AppState>
     </NavigationContainer>
   );
 };

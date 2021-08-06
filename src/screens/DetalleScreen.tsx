@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import {StackScreenProps} from '@react-navigation/stack';
-import React from 'react';
+import React, {useContext} from 'react';
+import {useEffect} from 'react';
 import {
   View,
   Image,
@@ -14,6 +15,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../constants/Colors';
+import {UserTracksContext} from '../context/UserTracksContext';
 import {RootStackParams} from '../navigation/Navigator';
 
 interface Props extends StackScreenProps<RootStackParams, 'DetalleScreen'> {}
@@ -21,10 +23,15 @@ interface Props extends StackScreenProps<RootStackParams, 'DetalleScreen'> {}
 export const DetalleScreen = (props: Props) => {
   const {top} = useSafeAreaInsets();
   const {goBack} = useNavigation();
+  const {addTrackToUserListen} = useContext(UserTracksContext);
   const {width} = useWindowDimensions();
   const {route} = props;
   const {params} = route;
   const {name, image, artist} = params;
+
+  useEffect(() => {
+    addTrackToUserListen(params);
+  }, []);
 
   return (
     <View style={{flex: 1, top: top}}>

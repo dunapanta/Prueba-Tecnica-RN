@@ -1,5 +1,12 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {View, StatusBar, Text, StyleSheet} from 'react-native';
+import {
+  View,
+  StatusBar,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -11,12 +18,17 @@ import {useObtainTracksList} from '../hooks/useObtainTracksList';
 export const HomeScreen = () => {
   const {top} = useSafeAreaInsets();
   const {topTracksList} = useObtainTracksList();
+  const {navigate} = useNavigation();
   return (
     <View style={{...styles.container, top: top}}>
       <StatusBar backgroundColor={Colors.primary} />
       <View style={styles.header}>
         <View style={{flex: 1, marginLeft: 10}}>
-          <Icon name="menu-outline" size={36} color={Colors.secondary} />
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => navigate('PerfilScreen')}>
+            <Icon name="person-outline" size={36} color={Colors.secondary} />
+          </TouchableOpacity>
         </View>
         <View style={{flex: 3}}>
           <Text style={styles.headerText}>Top Tracks en España</Text>
